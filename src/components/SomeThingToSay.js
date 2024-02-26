@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
@@ -8,6 +10,10 @@ export default function SomethingToSay() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    Aos.init();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,11 +39,19 @@ export default function SomethingToSay() {
 
   return (
     <div id="somethingToSay" className="mt-10">
-      <h1 className="font-bold text-3xl sm:text-3xl lg:text-5xl text-center mb-10 ">
+      <h1
+        data-aos="fade-up"
+        data-aos-duration="2000"
+        className="font-bold text-3xl sm:text-3xl lg:text-5xl text-center mb-10 "
+      >
         Have Something To Say?
       </h1>
 
-      <div className="container w-3/5 mx-auto bg-gray-200 mb-10">
+      <div
+        data-aos="fade-up"
+        data-aos-duration="2000"
+        className="container w-3/5 mx-auto bg-gray-200 mb-10"
+      >
         <div id="form" className="flex flex-col md:flex-row md:-mx-4 p-10 ">
           <div
             id="textt"

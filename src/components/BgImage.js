@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function BgImage() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const openModalMenu = () => {
+    setIsMenuOpen(true);
+  };
+
+  const closeModalMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <div id="slider" className="" style={{ fontFamily: "Oswald, sans-serif" }}>
       <div
@@ -26,12 +36,28 @@ export default function BgImage() {
               outdoors and online. Enjoy the most flexible sports and wellness
               offer in Europe!
             </p>
-            <button className="flex items-center mt-4 px-6 py-4 bg-[#F1900E] hover:bg-opacity-80 text-white text-sm uppercase focus:outline-none rounded-full font-open-sans">
+            <button
+              onClick={openModalMenu}
+              className="flex items-center mt-4 px-6 py-4 bg-[#F1900E] hover:bg-opacity-80 text-white text-sm uppercase focus:outline-none rounded-full font-open-sans"
+            >
               <span className="font-bold">Discover Location</span>
             </button>
           </div>
         </div>
       </div>
+      {isMenuOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end">
+          <div className="bg-white w-3/4 h-full overflow-y-auto">
+            {/* Place your modal content here */}
+            <button
+              onClick={closeModalMenu}
+              className="absolute top-0 right-0 m-4 text-gray-500 hover:text-gray-800"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
